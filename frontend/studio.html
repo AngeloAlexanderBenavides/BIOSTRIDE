@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOSTRIDE | Google Event Edition</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Nunito Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <script src="js/tailwind-studio-config.js"></script>
+    <link rel="stylesheet" href="css/studio.css">
+</head>
+
+<body class="bg-aura-bg text-gray-700 relative overflow-x-hidden">
+
+    <!-- ANIMATED BACKGROUND GOOGLE I/O STYLE -->
+    <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+        <!-- Blue Circle -->
+        <div class="absolute top-20 -left-10 w-64 h-64 bg-g-blue/10 rounded-full blur-3xl animate-float"></div>
+        <!-- Red Circle -->
+        <div class="absolute top-40 -right-10 w-72 h-72 bg-g-red/10 rounded-full blur-3xl animate-float-delayed"></div>
+        <!-- Yellow Pill -->
+        <div class="absolute bottom-20 left-20 w-96 h-32 bg-g-yellow/10 rounded-full blur-3xl rotate-45 animate-float">
+        </div>
+        <!-- Green Circle -->
+        <div class="absolute bottom-10 right-10 w-40 h-40 bg-g-green/10 rounded-full blur-3xl animate-float-delayed">
+        </div>
+    </div>
+
+    <!-- TOP BAR -->
+    <nav class="bg-white/80 backdrop-blur-md p-4 sticky top-0 z-50 border-b border-gray-100">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 decoration-none">
+                <!-- Logo with Google colors -->
+                <div
+                    class="flex items-center justify-center bg-white p-1 rounded-full border border-gray-100 shadow-sm">
+                    <i
+                        class="fa-solid fa-layer-group text-2xl text-transparent bg-clip-text bg-gradient-to-br from-g-blue via-g-red to-g-yellow"></i>
+                </div>
+                <span class="font-black text-xl tracking-tight text-gray-800">
+                    BIO<span class="text-g-blue">STRIDE</span>
+                </span>
+            </a>
+            <div class="flex gap-2">
+                <span class="w-3 h-3 rounded-full bg-g-blue animate-pulse"></span>
+                <span class="w-3 h-3 rounded-full bg-g-red animate-pulse delay-75"></span>
+                <span class="w-3 h-3 rounded-full bg-g-yellow animate-pulse delay-100"></span>
+                <span class="w-3 h-3 rounded-full bg-g-green animate-pulse delay-150"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-4xl mx-auto p-4 sm:p-6 pb-20">
+
+        <!-- Title -->
+        <div class="text-center mb-8 mt-4 animate-float">
+            <h1 class="text-4xl sm:text-5xl font-black text-gray-800 mb-2 tracking-tight">
+                Let's Design Your <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-g-blue to-g-red">Prosthesis</span>
+            </h1>
+            <p class="text-lg text-gray-500 font-bold">Powered by Google Gemini</p>
+        </div>
+
+        <!-- MAIN CARD -->
+        <div
+            class="bg-white/90 backdrop-blur-sm rounded-[2rem] shadow-2xl border border-white overflow-hidden relative">
+
+            <!-- Google Decorative Top Bar -->
+            <div class="h-2 w-full bg-gradient-to-r from-g-blue via-g-red via-g-yellow to-g-green"></div>
+
+            <form id="designForm">
+                <!-- STEP 1: PHOTO -->
+                <div class="p-6 sm:p-8 border-b border-gray-100">
+                    <h2 class="text-xl font-black text-gray-800 mb-4 flex items-center gap-3">
+                        <span
+                            class="bg-g-blue text-white w-8 h-8 rounded-full flex items-center justify-center text-sm shadow-lg shadow-blue-200">1</span>
+                        Upload a photo
+                    </h2>
+
+                    <div
+                        class="border-4 border-dashed border-gray-200 rounded-2xl bg-gray-50 p-8 text-center hover:bg-blue-50 hover:border-g-blue transition-all duration-300 cursor-pointer group relative overflow-hidden">
+                        <!-- File Input (Hidden but clickable) -->
+                        <input type="file" id="imageInput" required accept="image/*"
+                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-50">
+
+                        <div
+                            class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 transition-opacity pointer-events-none">
+                        </div>
+                        <i
+                            class="fa-solid fa-cloud-arrow-up text-5xl text-gray-300 group-hover:text-g-blue group-hover:scale-110 transition-all duration-300 mb-4"></i>
+                        <p class="text-xl font-bold text-gray-600 group-hover:text-g-blue transition-colors">Tap here to
+                            upload photo</p>
+                        <p class="text-sm text-gray-400 mt-2 font-semibold">We use Computer Vision</p>
+
+                        <!-- Preview Container -->
+                        <div id="previewContainer" class="hidden mt-4 relative z-20 pointer-events-none">
+                            <img id="imagePreview" src=""
+                                class="h-48 mx-auto rounded-lg shadow-lg object-contain bg-white">
+                            <p class="text-g-green font-bold mt-2"><i class="fa-solid fa-check"></i> Image Loaded</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: QUESTIONS -->
+                <div class="p-6 sm:p-8">
+                    <h2 class="text-xl font-black text-gray-800 mb-6 flex items-center gap-3">
+                        <span
+                            class="bg-g-red text-white w-8 h-8 rounded-full flex items-center justify-center text-sm shadow-lg shadow-red-200">2</span>
+                        Tell us what you need
+                    </h2>
+
+                    <!-- Where is it? -->
+                    <p class="font-bold text-gray-600 mb-3 uppercase text-xs tracking-wider">Prosthetic Configuration
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <label class="cursor-pointer relative group">
+                            <input type="radio" name="limbConfig" value="Below Knee" class="check-hidden hidden"
+                                checked>
+                            <div
+                                class="transition-card border-2 border-gray-100 rounded-2xl p-5 flex flex-col items-center text-center h-full bg-white group-hover:shadow-lg group-hover:-translate-y-1">
+                                <div
+                                    class="bg-blue-50 p-3 rounded-full text-g-blue mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-arrow-down text-xl"></i>
+                                </div>
+                                <span class="font-bold text-lg text-gray-700">Below Knee</span>
+                                <i
+                                    class="fa-solid fa-circle-check check-icon text-g-blue absolute top-3 right-3 text-xl hidden animate-bounce"></i>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer relative group">
+                            <input type="radio" name="limbConfig" value="Above Knee" class="check-hidden hidden">
+                            <div
+                                class="transition-card border-2 border-gray-100 rounded-2xl p-5 flex flex-col items-center text-center h-full bg-white group-hover:shadow-lg group-hover:-translate-y-1">
+                                <div
+                                    class="bg-red-50 p-3 rounded-full text-g-red mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-arrow-up text-xl"></i>
+                                </div>
+                                <span class="font-bold text-lg text-gray-700">Above Knee</span>
+                                <i
+                                    class="fa-solid fa-circle-check check-icon text-g-blue absolute top-3 right-3 text-xl hidden animate-bounce"></i>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Activity -->
+                    <p class="font-bold text-gray-600 mb-3 uppercase text-xs tracking-wider">What is your activity?
+                        (Select all that apply)</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+                        <!-- Walk -->
+                        <label class="cursor-pointer relative group">
+                            <input type="checkbox" name="activity" value="Walk" class="check-hidden hidden">
+                            <div
+                                class="transition-card border-2 border-gray-100 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 bg-white group-hover:shadow-lg group-hover:-translate-y-1 h-32">
+                                <i class="fa-solid fa-person-walking text-3xl text-g-blue"></i>
+                                <span class="font-bold text-md">Walking</span>
+                                <i
+                                    class="fa-solid fa-circle-check check-icon text-g-blue absolute top-2 right-2 text-lg hidden"></i>
+                            </div>
+                        </label>
+                        <!-- Run -->
+                        <label class="cursor-pointer relative group">
+                            <input type="checkbox" name="activity" value="Run" class="check-hidden hidden">
+                            <div
+                                class="transition-card border-2 border-gray-100 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 bg-white group-hover:shadow-lg group-hover:-translate-y-1 h-32">
+                                <i class="fa-solid fa-person-running text-3xl text-g-yellow"></i>
+                                <span class="font-bold text-md">Running</span>
+                                <i
+                                    class="fa-solid fa-circle-check check-icon text-g-blue absolute top-2 right-2 text-lg hidden"></i>
+                            </div>
+                        </label>
+                        <!-- Sports -->
+                        <label class="cursor-pointer relative group">
+                            <input type="checkbox" name="activity" value="Sport" class="check-hidden hidden">
+                            <div
+                                class="transition-card border-2 border-gray-100 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 bg-white group-hover:shadow-lg group-hover:-translate-y-1 h-32">
+                                <i class="fa-solid fa-futbol text-3xl text-g-green"></i>
+                                <span class="font-bold text-md">Sports</span>
+                                <i
+                                    class="fa-solid fa-circle-check check-icon text-g-blue absolute top-2 right-2 text-lg hidden"></i>
+                            </div>
+                        </label>
+                        <!-- Cycling -->
+                        <label class="cursor-pointer relative group">
+                            <input type="checkbox" name="activity" value="Cycling" class="check-hidden hidden">
+                            <div
+                                class="transition-card border-2 border-gray-100 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 bg-white group-hover:shadow-lg group-hover:-translate-y-1 h-32">
+                                <i class="fa-solid fa-bicycle text-3xl text-purple-500"></i>
+                                <span class="font-bold text-md">Cycling</span>
+                                <i
+                                    class="fa-solid fa-circle-check check-icon text-g-blue absolute top-2 right-2 text-lg hidden"></i>
+                            </div>
+                        </label>
+                        <!-- Swimming -->
+                        <label class="cursor-pointer relative group">
+                            <input type="checkbox" name="activity" value="Swimming" class="check-hidden hidden">
+                            <div
+                                class="transition-card border-2 border-gray-100 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 bg-white group-hover:shadow-lg group-hover:-translate-y-1 h-32">
+                                <i class="fa-solid fa-person-swimming text-3xl text-cyan-500"></i>
+                                <span class="font-bold text-md">Swimming</span>
+                                <i
+                                    class="fa-solid fa-circle-check check-icon text-g-blue absolute top-2 right-2 text-lg hidden"></i>
+                            </div>
+                        </label>
+                        <!-- Daily -->
+                        <label class="cursor-pointer relative group">
+                            <input type="checkbox" name="activity" value="Daily" class="check-hidden hidden">
+                            <div
+                                class="transition-card border-2 border-gray-100 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 bg-white group-hover:shadow-lg group-hover:-translate-y-1 h-32">
+                                <i class="fa-solid fa-mug-hot text-3xl text-orange-400"></i>
+                                <span class="font-bold text-md">Daily Use</span>
+                                <i
+                                    class="fa-solid fa-circle-check check-icon text-g-blue absolute top-2 right-2 text-lg hidden"></i>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Input Prompt -->
+                    <div class="bg-yellow-50 p-1 rounded-2xl border border-yellow-200 mb-8 flex items-center">
+                        <div class="p-3">
+                            <i class="fa-solid fa-wand-magic-sparkles text-g-yellow text-xl"></i>
+                        </div>
+                        <input id="detailsInput" type="text" placeholder="Special wishes (e.g., Iron Man texture)..."
+                            class="w-full bg-transparent p-2 font-bold text-gray-700 placeholder-gray-400 focus:outline-none">
+                    </div>
+
+                    <!-- GOOGLE MAGIC BUTTON -->
+                    <button type="submit" id="submitBtn"
+                        class="w-full bg-gradient-to-r from-g-blue via-g-red via-g-yellow to-g-green bg-[length:200%_200%] animate-gradient-x text-white font-black text-xl py-5 rounded-2xl shadow-xl hover:shadow-2xl transform active:scale-95 transition-all flex items-center justify-center gap-3 group">
+                        <i class="fa-solid fa-bolt group-hover:animate-bounce"></i>
+                        GENERATE MODEL
+                    </button>
+
+                    <div
+                        class="flex justify-center mt-4 gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                        <i class="fa-solid fa-shield-halved text-g-green"></i>
+                        Safety Check AI Active
+                    </div>
+
+                </div>
+            </form>
+
+            <!-- Analysis Log Overlay (Terminal Style) -->
+            <div id="analysisOverlay"
+                class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4">
+                <div
+                    class="w-full max-w-3xl bg-[#0c0c0c] rounded-xl shadow-2xl border border-gray-800 overflow-hidden flex flex-col max-h-[80vh] font-mono relative">
+
+                    <!-- Terminal Header -->
+                    <div
+                        class="bg-[#1c1c1c] px-4 py-3 flex items-center justify-between border-b border-gray-800 select-none">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                        </div>
+                        <div class="text-xs text-gray-400 font-bold tracking-wider">BIONSTRIDE_ROOT_ACCESS</div>
+                        <div class="w-10"></div> <!-- Spacer to center title -->
+                    </div>
+
+                    <!-- Logs Content -->
+                    <div class="flex-1 overflow-y-auto p-6 space-y-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent h-[400px]"
+                        id="logsArea">
+                        <!-- Logs will appear here dynamically -->
+                        <div class="text-green-500 mb-4">> Initializing connection to Google Gemini 2.5...</div>
+                    </div>
+
+                    <!-- Footer Status -->
+                    <div
+                        class="bg-[#1c1c1c] border-t border-gray-800 p-2 flex justify-between items-center text-[10px] text-gray-500 px-4">
+                        <span class="animate-pulse">● PROCESSING DATA</span>
+                        <span>SECURE CONNECTION</span>
+                    </div>
+
+                    <button onclick="location.reload()"
+                        class="absolute bottom-4 right-4 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs hidden"
+                        id="resetBtn">ABORT</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center pb-8 px-4 text-gray-400 font-bold text-sm">
+        © 2026 BIOSTRIDE • Demo for Google
+    </footer>
+
+    <!-- Logic -->
+    <script src="js/studio.js"></script>
+</body>
+
+</html>

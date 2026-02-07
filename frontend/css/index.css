@@ -1,0 +1,63 @@
+/* MAGIC GLASS EFFECT */
+.glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.glass-dark {
+    background: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Google Gradient Text */
+.text-gradient-google {
+    background: linear-gradient(to right, #4285F4, #EA4335, #FBBC05, #34A853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Animation for connecting line */
+@keyframes flow {
+    0% {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+.animate-flow {
+    animation: flow 3s infinite ease-in-out;
+}
+
+@keyframes flow-vertical {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+.animate-flow-vertical {
+    animation: flow-vertical 3s infinite ease-in-out;
+}

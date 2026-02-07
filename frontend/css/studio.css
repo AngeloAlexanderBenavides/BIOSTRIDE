@@ -1,0 +1,180 @@
+/* Console Styles */
+#logsArea {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    scroll-behavior: smooth;
+    background-color: #0d1117;
+    /* GitHub Dark Dimmed */
+}
+
+/* Custom Scrollbar for Console */
+#logsArea::-webkit-scrollbar {
+    width: 8px;
+}
+
+#logsArea::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+
+#logsArea::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 4px;
+}
+
+#logsArea::-webkit-scrollbar-thumb:hover {
+    background: #58a6ff;
+}
+
+/* Log Entries */
+.console-line {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-left: 3px solid transparent;
+    animation: fadeIn 0.3s ease-out;
+    align-items: flex-start;
+}
+
+.console-line.info {
+    border-left-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.console-line.success {
+    border-left-color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.console-line.warning {
+    border-left-color: #eab308;
+    background: rgba(234, 179, 8, 0.1);
+}
+
+.console-line.error {
+    border-left-color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.console-line.agent {
+    border-left-color: #a855f7;
+    background: rgba(168, 85, 247, 0.05);
+}
+
+.console-timestamp {
+    color: #6e7681;
+    font-size: 0.75rem;
+    min-width: 60px;
+    padding-top: 2px;
+}
+
+.console-content {
+    color: #c9d1d9;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    word-break: break-word;
+    display: flex;
+    /* NEW: Flex layout for better item handling */
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    /* Gap acts as the margin between items */
+    flex: 1;
+    /* Take remaining space */
+}
+
+/* Log Highlights */
+.log-agent-name {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    /* margin-right: 8px; Removed because we use gap now */
+    display: inline-flex;
+    /* Better vertical alignment */
+    align-items: center;
+}
+
+.agent-supervisor {
+    color: #58a6ff;
+    background: rgba(88, 166, 255, 0.15);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+}
+
+.agent-validator {
+    color: #f2cc60;
+    background: rgba(242, 204, 96, 0.15);
+    border: 1px solid rgba(242, 204, 96, 0.3);
+}
+
+.agent-designer {
+    color: #ff7b72;
+    background: rgba(255, 123, 114, 0.15);
+    border: 1px solid rgba(255, 123, 114, 0.3);
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-left: auto;
+    /* Pushes badge to the far right */
+}
+
+.status-rejected {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.status-approved {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Functional styles */
+.check-hidden:checked+div {
+    border-color: #4285F4;
+    /* Google Blue */
+    background-color: #EFF6FF;
+    box-shadow: 0 10px 15px -3px rgba(66, 133, 244, 0.2);
+    transform: scale(1.03);
+}
+
+.check-hidden:checked+div .check-icon {
+    display: block;
+}
+
+.transition-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide scrollbar in color selector */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
