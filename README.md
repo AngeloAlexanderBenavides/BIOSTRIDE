@@ -1,4 +1,4 @@
-# BionStride (formerly AuraPrint AI) 🦾
+# BionStride 🦾
 
 **BionStride** is an AI-powered design studio that democratizes access to personalized prosthetic devices. Using a multi-agent architecture powered by Google Gemini, it analyzes user simple photos, extracts biomechanical data, and generates 3D-printable prosthetic designs (STL) along with personalized technical documentation.
 
@@ -8,10 +8,10 @@
 *   **🤖 Multi-Agent Workflow**:
     *   **Supervisor**: Orchestrates the entire process.
     *   **Validator**: Ensures image safety and relevance.
-    *   **Analyst**: Performs computer vision tasks.
-    *   **Prompt Engineer**: translates biomechanics into visual generation prompts.
-    *   **Visualizer**: Generates concept preview images (Integration with Banana.dev / Mock).
-    *   **Design Engineer**: Calculates physics (wall thickness, material) and generates 3D assets.
+    *   **Analyst**: Performs anatomical analysis using `Gemini 2.5 Flash` (Vision).
+    *   **Prompt Engineer**: Translates biomechanical data into precise visual prompts.
+    *   **Visualizer**: Generates photorealistic prosthetic previews using `Gemini 2.5 Flash Image` (Nano Banana).
+    *   **Design Engineer**: Calculates physics (wall thickness, material) and generates 3D assets (STL).
     *   **Safety Auditor**: Validates structural integrity (< 3mm rejection loop).
     *   **Technical Writer**: Generates user-friendly assembly guides in the user's native language (Spanish supported).
 *   **🖥️ Hacker Console UI**: A "Terminal-style" loading screen that visualizes the agents "thinking" in real-time.
@@ -41,9 +41,6 @@ Create a `.env` file in the root directory (or inside `backend/`) based on `.env
 
 ```bash
 GOOGLE_API_KEY=your_key_here
-# Optional for Image Gen
-BANANA_API_KEY=...
-BANANA_MODEL_KEY=...
 ```
 
 ### 3. Run the Server
